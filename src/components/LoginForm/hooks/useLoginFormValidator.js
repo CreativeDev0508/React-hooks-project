@@ -37,5 +37,23 @@ export const useLoginFormValidator = form => {
         }
     });
 
-    const validateForm = ({form, field, errors, forceTouchErrors = false })
+    const validateForm = ({form, field, errors, forceTouchErrors = false }) => {
+        let isValid = true;
+
+        // Create a deep copy of the errors
+        const nextErrors = JSON.parse(JSON.stringify(errors));
+
+        if (forceTouchErrors) {
+            nextErrors = touchErrors(errors);
+        }
+
+        const {email, password, confirmPassword} = form;
+
+        if(nextErrors.email.dirty && (field ? field === "email" : true)) {
+            const emailMessage = emailValidator(email, form);
+            nextErrors.email.error = !!emailMessage;
+            nextErrors.email.message = emailMessage;
+            if (!!emailMessage) isValid = false;
+        }
+    }
 }
