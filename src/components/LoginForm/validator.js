@@ -7,7 +7,7 @@ export const emailValidator = email => {
     return "";
 };
 
-export const passwordVallidator = password => {
+export const passwordValidator = password => {
     if(!password) {
         return "Password is required";
     } else if(password.length < 8) {
