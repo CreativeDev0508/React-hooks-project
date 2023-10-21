@@ -6,6 +6,7 @@ import {
     confirmPasswordValidator
 } from "../validator.js";
 
+
 const touchErrors = errors => {
     return Object.entries(errors).reduce((acc, [field, fieldError]) => {
         acc[field] = {
@@ -45,6 +46,7 @@ export const useLoginFormValidator = form => {
 
         if (forceTouchErrors) {
             nextErrors = touchErrors(errors);
+            console.log(nextErrors);
         }
 
         const { email, password, confirmPassword } = form;

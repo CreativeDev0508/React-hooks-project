@@ -11,7 +11,7 @@ const LoginForm = props => {
     });
 
     const { errors, validateForm, onBlurField } = useLoginFormValidator(form);
-
+    console.log(form);
     const onUpdateField = e => {
         const field = e.target.name;
         const nextFormState = {
